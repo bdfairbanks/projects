@@ -1,0 +1,31 @@
+<h1>Battledome!</h1>
+<table>
+	<tr>
+		<th>p1 score</th>
+		<th>p2 score</th>
+		<th>p1 match</th>
+		<th>p2 match</th>
+	</tr>
+
+	<tr>
+		<td><%=session[:message].return_counter_p1%><td>
+		<td><%=session[:message].return_counter_p2%></td>
+		<td><%=session[:message].return_win_counter_p1%></td>
+		<td><%=session[:message].return_win_counter_p2%></td>
+	</tr>
+</table>
+<form action ="choose_2" method="post">
+
+	<label> p1_choice </label>
+	<input type="radio" name="p1_choice" value="rock"> Rock<br>
+  <input type="radio" name="p1_choice" value="paper"> Paper<br>
+  <input type="radio" name="p1_choice" value="scissors"> Scissors<br>  
+
+<label> p2_choice </label>
+	<input type="radio" name="p2_choice" value="rock"> Rock<br>
+  <input type="radio" name="p2_choice" value="paper"> Paper<br>
+  <input type="radio" name="p2_choice" value="scissors"> Scissors<br>
+
+    <input type="submit" value="Submit">
+
+    </form>
