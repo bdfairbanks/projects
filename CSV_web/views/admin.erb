@@ -1,0 +1,38 @@
+
+
+<h1> Edit Account Information</h1>
+
+<form action ="/getinfo" method ="post"> 
+
+	<select name = "Account">
+		<option value = "Sonia">Sonia</option>
+		<option value = "Priya">Priya</option>
+	</select>
+
+	<p><label>Date</label></p> 
+		<input type="date" name="Date">  <!-- date needs to match CSV format -->
+
+	<p><label>Retailer</label></p>
+		<input type="text" name="Payee">
+
+	<p><label>Category</label></p>
+		<input type="text" name="Category">
+
+	<p><label>Gained</label></p>
+		<input type = "text" name="Outflow">
+
+	<p><label>Spent</label></p>
+		<input type="text" name="Inflow">
+
+	<input type= "submit"=>
+</form>
+
+	<h1> The Less Loved Child </h1>
+<a href="/account?name=Sonia">Sonia </a> 
+	<h1> The Good One </h1>
+<a href="/account?name=Priya">Priya </a> 
+
+<form action ="/logout" method="post">
+
+<input type="submit" value="Log Out">
+</form>
