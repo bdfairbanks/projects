@@ -25,7 +25,6 @@ post "/identify" do
 end
 
 post "/logout" do
-	binding.pry
 	session[:message] = ""
 	redirect "/home"
 end

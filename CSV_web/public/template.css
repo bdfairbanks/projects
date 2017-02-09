@@ -1,2 +1,26 @@
-body {
-	  background-color:rgb(120, 192, 191);
+body { margin: 0 auto;
+		max-width: 50em;
+		text-align: center;
+	  	background-color:rgb(93,87,145);
+	  	color: rgb(171,243,230);
+		padding: 2px 4px;
+  		vertical-align: text-bottom;
+  		border-style: double;
+  		font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
+	}
+
+a { font-size: 20;
+	color: rgb(255,255,255);
+	position: relative;
+	top: 250px;
+}
+
+h1{}
+
+h3{position: relative;
+	top:500px;
+}
+
+#dadgin{position: relative;
+		bottom:20px;
+		}

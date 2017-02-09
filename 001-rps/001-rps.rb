@@ -35,23 +35,23 @@ class Tally
 		@win_counter_p2 = 0
 	end
 
-	def add_to_counter_p1(input)
-		@counter_p1 += input
+	def add_to_counters(input)
+		if input == 1
+		@counter_p1 +=1
+	elsif input ==2
+		@counter_p2 +=1
+		end
 	end
-
-	def add_to_counter2(input)
-		@counter_p2 += input
-	end
-
 	def remember_wins
-		if @counter_p1 == 3 && @win_counter_p1 <3
+		if @counter_p1 == 2 && @win_counter_p1 <3
 			@win_counter_p1 += 1
 			puts "p1 win one!(round)"
-		elsif @counter_p2 == 3 && @win_counter_p2 <3
+			reset_count
+		elsif @counter_p2 == 2 && @win_counter_p2 <3
 			@win_counter_p2 += 1
 			puts "p2 wins sometimes too!"
+			reset_count
 		end	
-		reset_count
 	end
 
 	def reset_count
@@ -75,6 +75,47 @@ class Tally
 		return @win_counter_p2
 	end
 end
+
+
+class Input_to_end(tally)
+
+	def box
+		@p1_choice=Handstyle.new
+		@p2_choice=Handstyle.new
+	end
+
+	def prepare(choice)
+		while choice.return == nil
+			choice.holder
+			choice.ask_correctly
+			choice.weed_out
+		end
+	puts choice + "picked" choice.return
+	return choice
+	end
+
+	def duel(choice1, choice2)
+		if choice1 == "rock" && choice2 == "scissors"||choice1 == "paper" && choice2 == "rock"||choice1 == "scissors" && choice2 == "paper"
+			points = 1 
+		elsif choice1 == choice2
+			points = 0
+		else
+			 points = 2
+		end
+		return points
+	end
+
+	def judge(result)
+		if result == 1
+			puts "P1 wins this round"
+		elsif 
+			result==2
+			puts "P2 wins, somehow."
+		else 
+			puts "A tie? Disgusting."
+		end
+	end
+
 
 #functions
 #eventually there will be one p_input, i swear...
@@ -106,23 +147,20 @@ end
 #the duel mechanism is the main engine of this peice.
 def duel(choice1, choice2)
 	if choice1 == "rock" && choice2 == "scissors"||choice1 == "paper" && choice2 == "rock"||choice1 == "scissors" && choice2 == "paper"
-		points1 = 1 
-		points2 = 0
+		points = 1 
 	elsif choice1 == choice2
-		points1 = 0
-		points2 = 0
+		points = 0
 	else
-		 points1 = 0
-		 points2 = 1
+		 points = 2
 	end
-	return points1, points2
+	return points
 end
 
 def judge(result)
-	if result == [1,0]
+	if result == 1
 		puts "P1 wins this round"
 	elsif 
-		result==[0,1]
+		result==2
 		puts "P2 wins, somehow."
 	else 
 		puts "A tie? Disgusting."
@@ -138,13 +176,12 @@ tally.set_up
 while tally.return_win_counter_p1 <3 && tally.return_win_counter_p2 <3
 
 #another messy loop, this one keeping track of the game by game score.
-	while tally.return_counter_p1 <3 && tally.return_counter_p2 <3
+	while tally.return_counter_p1 <2 && tally.return_counter_p2 <2
 		p1_choice = get_input_p1()
 		p2_choice = get_input_p2()
-		thats = duel(p1_choice, p2_choice)
-		judge(thats)
-		tally.add_to_counter_p1(thats.fetch(0))
-		tally.add_to_counter2(thats.fetch(1))
+		result = duel(p1_choice, p2_choice)
+		judge(result)
+		tally.add_to_counters(result)
 		tally.remember_wins
 	end
 
