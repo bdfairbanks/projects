@@ -1,0 +1,28 @@
+body {
+	text-align: center;
+	background-color: #1F1A51;
+	color: #E83520;
+	border-style: groove;
+	border-color: #4BAF54;
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+}
+table{
+	margin-left: auto;
+	margin-right: auto;
+	text-shadow: 2px 2px #4BAFB4;
+	font-size: 200px
+}
+/*.write{
+ 		padding-right: 20px
+}
+.left{
+}*/
+.question1{
+	display: block;
+}
+.question2{
+	display: none;
+}
+.question3{
+	display: none;
+}
