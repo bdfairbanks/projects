@@ -152,7 +152,6 @@ window.addEventListener("load", comment)
 
 					post.appendChild(inPostDivOne);
 					postComments.appendChild(post);
-					
 					comments = this.parentElement.parentElement.parentElement.parentElement.firstElementChild.lastElementChild.innerHTML
 					numString=comments[0];
 					comments=comments.substring(1);
@@ -209,24 +208,31 @@ window.addEventListener("load", comment)
 					inPostDivOne.appendChild(commentInfo)
 
 					post.appendChild(inPostDivOne);
-					postComments.appendChild(post);
+					
+
 					comments = this.parentElement.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.nextElementSibling.innerHTML;
 					if (comments == "Reply"){
 						this.parentElement.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = "1 Reply";
 						this.previousElementSibling.value =""
 						event.preventDefault()
-
+						postComments.insertBefore(post, postComments.childNodes[0]);
 					}
 					else if (comments == "1 Reply"){
 						this.parentElement.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = "2 Replies";
 						this.previousElementSibling.value =""
 						event.preventDefault()
+						postComments.insertBefore(post, postComments.childNodes[1]);
 					}
 					else{
+						debugger
 						numString=comments[0];
 						comments=comments.substring(1);
 						numString =Number(numString);
+
+						insertAt = numString *2;
 						numString = numString+1;
+						postComments.insertBefore(post, postComments.childNodes[insertAt]);
+						debugger
 						finished = numString.toString().concat(comments);
 						this.parentElement.parentElement.parentElement.parentElement.previousElementSibling.firstElementChild.nextElementSibling.innerHTML = finished;
 						this.previousElementSibling.value =""
@@ -287,7 +293,7 @@ window.addEventListener("load", share)
 			modal.style.display = "block"
 			var spread = "Share "
 			var spread2 = "'s post! (just ask yourself if it's worth it....)"
-			var spread3= document.getElementsByClassName("person")[1].innerHTML
+			var spread3= document.getElementsByClassName("person")[0].innerHTML
 			document.getElementsByClassName("modal__title")[0].innerHTML = spread + spread3 +spread2
 			var text= document.getElementsByClassName("post__body")[0].innerHTML
 			document.getElementsByClassName("modal__body")[0].innerHTML = text
